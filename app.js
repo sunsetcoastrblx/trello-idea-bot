@@ -10,14 +10,14 @@ client.on('ready', () => {
 
 client.on('message', msg => {
     var cmd = msg.content.substr(0, msg.content.indexOf(' '));
-    var idea = msg.content.substr(msg.content.indexOf(' ' ) + 1);
+    var ban = msg.content.substr(msg.content.indexOf(' ' ) + 1);
 
-    if (cmd === '!idea') {
-        trello.addCard(idea, '', process.env.IDEA_BACKLOG_LIST_ID, (err, card) => {
+    if (cmd === '!ban') {
+        trello.addCard(ban, '', process.env.IDEA_BACKLOG_LIST_ID, (err, card) => {
             if (err) {
-                msg.reply("I couldn't create your card. Check your command and make sure it is in the format of !idea [message]");
+                msg.reply("I couldn't create your card. Check your command and make sure it is in the format of !ban [message]");
             } else {
-                msg.reply('I have gone ahead and made you card. You can view it here: https://trello.com/b/V7XrnOEF/project-hot-sauce');
+                msg.reply('I have gone ahead and banned that player for you. If they have not automatically been kicked, please kick them.');
             }
         })
     }
